@@ -3,7 +3,7 @@ LABEL stage=builder
 RUN mkdir -p /go/src/demo/internal/handler
 WORKDIR /go/src/demo
 COPY internal/main.go ./internal
-COPY internal/handler/* ./internal/handler
+COPY internal/handler/* ./internal/handler/
 RUN CGO_ENABLED=0 GOOS=linux go build -o app /go/src/demo/internal/main.go
 
 FROM alpine:latest
