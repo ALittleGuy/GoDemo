@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	listener, err := net.Listen("tcp", "localhost:8000")
+	listener, err := net.Listen("tcp", "0.0.0.0:8080")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -17,7 +17,7 @@ func main() {
 			log.Print(err)
 			continue
 		}
-		handler.HandleConnForReply(conn)
+		go handler.HandleConnForTime(conn)
 	}
 }
 

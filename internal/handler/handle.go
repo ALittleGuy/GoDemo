@@ -29,6 +29,7 @@ func HandleConnForTime(c net.Conn) {
 
 func HandleConnForReply(c net.Conn)  {
 	defer c.Close()
+	fmt.Fprintln(c,"\t" , "test")
 	input  := bufio.NewScanner(c)
 	for input.Scan() {
 		echo(c , input.Text() , 1*time.Second)
@@ -41,5 +42,4 @@ func echo(c net.Conn, text string, duration time.Duration) {
 	fmt.Fprintln(c , "\t" , strings.ToUpper(text))
 	time.Sleep(duration)
 	fmt.Fprintln(c , "\t" , strings.ToLower(text))
-
 }

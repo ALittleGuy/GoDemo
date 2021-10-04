@@ -14,3 +14,8 @@ build:
 test:
 	@echo ${PROJECT} test
 
+docker:
+	@echo ${PROJECT} docker
+	docker build --rm -t homerpan/godemo .
+	docker image prune --filter label=stage=builder
+	docker run --rm -it --name GoDemo -p 8080:8080 homerpan/godemo:latest
